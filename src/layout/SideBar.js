@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#1948C1",
     borderRadius: "6% 0 0 6%",
     width: 400,
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       width: 250,
     },
   },
