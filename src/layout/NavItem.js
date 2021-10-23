@@ -1,7 +1,7 @@
 import React from "react";
 
 import clsx from "clsx";
-import PropTypes from "prop-types";
+
 import { Button, ListItem, makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
