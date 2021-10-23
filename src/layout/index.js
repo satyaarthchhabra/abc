@@ -1,18 +1,7 @@
-import {
-  Avatar,
-  Badge,
-  Grid,
-  Hidden,
-  IconButton,
-  makeStyles,
-  Paper,
-  Typography,
-} from "@material-ui/core";
+import { Grid, makeStyles, Paper } from "@material-ui/core";
 import React, { useState } from "react";
 import SideBar from "./SideBar";
-import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import MenuIcon from "@material-ui/icons/Menu";
+import AppBar from "./AppBar";
 
 const useStyles = makeStyles((theme) => ({
   rightSide: {
@@ -75,51 +64,7 @@ const MainLayout = (props) => {
         </Grid>
         <Grid elevation={5} item xs={12} sm={9} className={classes.rightSide}>
           <Paper className={classes.rightSidePaper} elevation={5}>
-            <Grid
-              container
-              direction="row"
-              alignItems="center"
-              justifyContent="flex-end"
-              spacing={3}
-              className={classes.miniNav}
-            >
-              <Grid item>
-                <Badge
-                  classes={{ badge: classes.badge }}
-                  badgeContent={""}
-                  color="primary"
-                >
-                  <ChatBubbleOutlineIcon />
-                </Badge>
-              </Grid>
-              <Grid item>
-                <NotificationsNoneIcon />
-              </Grid>
-              <Grid item>
-                <Typography variant="h5" color="textPrimary">
-                  <span className={classes.firstName}>RIA</span> MOHAN
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Avatar
-                  alt="Ria Mohan"
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg"
-                />
-              </Grid>
-              <Hidden smUp>
-                <Grid item>
-                  <IconButton
-                    color="inherit"
-                    aria-label="Open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    className={classes.menuButton}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                </Grid>
-              </Hidden>
-            </Grid>
+            <AppBar handleDrawerToggle={handleDrawerToggle} />
             {props.children}
           </Paper>
         </Grid>

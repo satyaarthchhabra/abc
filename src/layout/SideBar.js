@@ -104,31 +104,7 @@ const SideBar = (props) => {
           }}
           variant="persistent"
         >
-          <Box
-            display="flex"
-            className={classes.desktopDrawerContent}
-            flexDirection="column"
-          >
-            <Box
-              alignItems="center"
-              display="flex"
-              className={classes.companyContainer}
-              flexDirection="column"
-              p={2}
-            >
-              <Typography color="textPrimary" variant="h4">
-                Company Logo
-              </Typography>
-            </Box>
-            <Box p={2}>
-              <List>
-                {items.map((item) => (
-                  <NavItem key={item.title} title={item.title} />
-                ))}
-              </List>
-            </Box>
-            <Box flexGrow={1} />
-          </Box>
+          {drawer}
         </Drawer>
       </Hidden>
       <Drawer
@@ -144,31 +120,7 @@ const SideBar = (props) => {
           display: { xs: "block", sm: "none" },
         }}
       >
-        <Box
-          display="flex"
-          className={classes.desktopDrawerContent}
-          flexDirection="column"
-        >
-          <Box
-            alignItems="center"
-            display="flex"
-            className={classes.companyContainer}
-            flexDirection="column"
-            p={2}
-          >
-            <Typography color="textPrimary" variant="h4">
-              Company Logo
-            </Typography>
-          </Box>
-          <Box p={2}>
-            <List>
-              {items.map((item) => (
-                <NavItem key={item.title} title={item.title} />
-              ))}
-            </List>
-          </Box>
-          <Box flexGrow={1} />
-        </Box>
+        {drawer}
       </Drawer>
     </>
   );
