@@ -2,7 +2,13 @@ import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 const useStyles = makeStyles((theme) => ({
   contentContainer: {
-    padding: "0 6rem ",
+    padding: "0 5rem ",
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "center",
+      alignItems: "center",
+      padding: " 0 0",
+      // backgroundColor: "red",
+    },
   },
   textGrey: {
     color: "#949494",
@@ -13,10 +19,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "8rem",
+    width: "7rem",
     border: "1px solid #949CD1",
     borderRadius: "10px",
     boxShadow: "0 3px 23px rgb(0 0 0 / 20%)",
+    [theme.breakpoints.down("md")]: {
+      height: "6rem",
+      width: "6rem",
+    },
   },
 }));
 const features = [
@@ -67,8 +77,9 @@ const DownloadReturns = () => {
           sx={{
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "flex-start",
-            my: 4,
+            justifyContent: "center",
+            alignItems: "center",
+            mt: 4,
           }}
         >
           {features.map((feature) => (

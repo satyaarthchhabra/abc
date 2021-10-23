@@ -2,6 +2,7 @@ import {
   Avatar,
   Badge,
   Grid,
+  Hidden,
   IconButton,
   makeStyles,
   Paper,
@@ -15,14 +16,18 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
   rightSide: {
-    zIndex: 100000,
     height: "100vh",
+    zIndex: 100000,
+    [theme.breakpoints.down("xs")]: {
+      zIndex: 1,
+    },
   },
   rightSidePaper: {
     padding: "0.5rem 1rem",
-    height: "100%",
+    minHeight: "100%",
     borderRadius: "4% 0 0 4%",
   },
+
   badge: {
     height: "10px",
     minWidth: "9px",
@@ -47,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainLayout = ({ children }) => {
+const MainLayout = (props) => {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -62,10 +67,13 @@ const MainLayout = ({ children }) => {
         direction="row"
         justifyContent="space-between"
       >
-        <Grid item xs={0} md={2}>
-          <SideBar />
+        <Grid item xs={0} sm={2}>
+          <SideBar
+            mobileOpen={mobileOpen}
+            handleDrawerToggle={handleDrawerToggle}
+          />
         </Grid>
-        <Grid elevation={5} item xs={12} md={9} className={classes.rightSide}>
+        <Grid elevation={5} item xs={12} sm={9} className={classes.rightSide}>
           <Paper className={classes.rightSidePaper} elevation={5}>
             <Grid
               container
@@ -88,17 +96,6 @@ const MainLayout = ({ children }) => {
                 <NotificationsNoneIcon />
               </Grid>
               <Grid item>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="start"
-                  onClick={handleDrawerToggle}
-                  sx={{ mr: 2, display: { md: "none" } }}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Grid>
-              <Grid item>
                 <Typography variant="h5" color="textPrimary">
                   <span className={classes.firstName}>RIA</span> MOHAN
                 </Typography>
@@ -109,8 +106,21 @@ const MainLayout = ({ children }) => {
                   src="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg"
                 />
               </Grid>
+              <Hidden smUp>
+                <Grid item>
+                  <IconButton
+                    color="inherit"
+                    aria-label="Open drawer"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                    className={classes.menuButton}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                </Grid>
+              </Hidden>
             </Grid>
-            {children}
+            {props.children}
           </Paper>
         </Grid>
       </Grid>
